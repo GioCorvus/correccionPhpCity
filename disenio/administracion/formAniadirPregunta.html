@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estiloAdmin.css">
+    <title>Administración</title>
+</head>
+<body>
+    <div id="contenedorForm">
+            <h1 class="tituloForm">CREAR PREGUNTA</h1>
+            <form action="listaPreguntas.html" method="post">
+                <label for="clave">Introducir pregunta:</label>
+                <input type="text" id="pregunta" name="pregunta" required>
+            
+                <label for="ambito">Selecciona el ámbito:</label>
+                <select id="ambito" name="ambito" required>
+                    <option value="1">Ámbito 1</option>
+                    <option value="2">Ámbito 2</option>
+                    <option value="3">Ámbito 3</option>
+                    <option value="4">Ámbito 4</option>
+                    <option value="5">Ámbito 5</option>
+                </select>
+            
+                <label for="titulo">Introducir pregunta correcta:</label>
+                <input type="text" id="correcta" name="correcta" required>
+            
+                <label for="titulo">Introducir pregunta incorrecta 1:</label>
+                <input type="text" id="incorrecta1" name="incorrecta1" required>
+
+                <label for="titulo">Introducir pregunta incorrecta 2:</label>
+                <input type="text" id="incorrecta2" name="incorrecta2" required>
+            
+                <button type="submit" class="botonForm">Enviar</button>
+            </form>
+    </div>
+    <a href="index.html" id="volverAlMenu" >VOLVER AL MENÚ</a>
+</body>
+</html>
+

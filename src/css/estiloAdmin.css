@@ -1,0 +1,357 @@
+/* Utilizar la fuente PartyConfetti para el encabezado */
+@font-face {
+    font-family: 'PartyConfetti';
+    src: url('../fonts/PartyConfetti.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Estilos generales */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif; /* Cambio en la declaración de la fuente */
+}
+
+body {
+    background-image: none;
+    background-color: rgb(218, 218, 218);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos para el nav */
+/* Estilos para el nav */
+nav {
+    background-color: #333; /* Color de fondo del nav */
+    padding: 15px;
+}
+
+nav ul {
+    list-style: none; /* Elimina los estilos de la lista por defecto */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Muestra los elementos en línea */
+    justify-content: center; /* Centra horizontalmente los elementos de la lista */
+    align-items: center; /* Centra verticalmente el texto en los elementos de la lista */
+}
+
+nav li {
+    margin-right: 20px; /* Espaciado entre elementos de la lista */
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px; /* Añade relleno para crear un área de clic más grande */
+    border: 2px solid white; /* Añade un borde blanco */
+    border-radius: 5px; /* Añade esquinas redondeadas */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el color de fondo y el texto */
+}
+
+nav a:hover {
+    background-color: #555; /* Cambia el color de fondo al pasar el ratón sobre el enlace */
+    color: white; /* Cambia el color del texto al pasar el ratón sobre el enlace */
+}
+
+
+.contenedor{
+    width:60%;
+    margin: auto;
+}
+
+/* Estilos para el encabezado */
+h1 {
+    text-align: center;
+    font-family: 'PartyConfetti', sans-serif; /* Aplicar la fuente personalizada */
+    font-size: 36px; /* Tamaño del encabezado */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilos para la tabla */
+table {
+    margin: auto;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para la tabla */
+}
+
+thead {
+    background-color: #333;
+    color: white;
+}
+
+th, td {
+    background-color: #f2f2f277;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Estilos alternos para filas */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tbody tr:hover {
+    transition: 0.8s;
+    background-color: #c1c0c0; /* Cambia el color al pasar el cursor sobre la fila */
+}
+#volverAlMenu {
+    width: 20%;
+    display: block; /* Cambio a bloque para ocupar el ancho disponible */
+    margin: auto; /* Espaciado */
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    text-align: center; /* Centrar texto horizontalmente */
+    line-height: 40px; /* Ajusta según el tamaño del botón para centrar verticalmente */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+
+.borrar-btn:hover {
+    background-color: rgb(197, 151, 105);
+    transition: 0.5s;
+}
+.volverAlJuego {
+    display: block; /* Cambio a bloque para ocupar el ancho disponible */
+    margin: 20px auto; /* Espaciado */
+    text-decoration: none;
+    width: 60%;
+    padding: 10px 20px;
+    background-color: #4e4e4e; 
+    color: #fff; 
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    text-align: center; /* Centrar texto */
+}
+.volverAlJuego:hover{
+    background-color: #363535; 
+    transition: 0.7s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Añade sombra */
+}
+
+/* Estilos para el formulario */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+textarea,
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding-left: 20px; 
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+    transition:1s;
+}
+
+/* Resaltar la pregunta correcta con fondo verde */
+/* Resaltar la pregunta correcta con borde verde */
+
+input#texto_respuesta_correcta {
+    border: 2px solid #4CAF50; /* Cambiamos el color del borde para resaltar */
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input#texto_respuesta_incorrecta1 {
+    border: 2px solid #af4f4c; /* Cambiamos el color del borde para resaltar */
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input#texto_respuesta_incorrecta2 {
+    border: 2px solid #af4c4c; /* Cambiamos el color del borde para resaltar */
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+input[type="button"] {
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+input[type="button"]:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para los botones + y - */
+.input-group {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group input[type="button"] {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.input-group input[type="button"]:hover {
+    background-color: #106514;
+    transition:1s;
+}
+
+/* Estilo específico para el botón "-" */
+.input-group input[type="button"][value="-"] {
+    background-color: #d9534f;
+}
+
+.input-group input[type="button"][value="-"]:hover {
+    background-color: #660b08;
+    transition:1s;
+}
+
+.error-message{
+    color:red;
+    font-style: italic;
+    text-align:center;
+    margin-bottom: 10px;
+  }
+
+  /*ESTILOS PARA EL DIV DE ERROR*/
+
+  /* Estilos específicos para el contenedorError */
+#contenedorError {
+    text-align: center;
+    background-color: #fff; /* Color de fondo */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+/* Estilos para el encabezado dentro del contenedorError */
+/* Estilos específicos para el contenedorError */
+#contenedorError {
+    text-align: center;
+    background-color: #fff; /* Color de fondo */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+/* Estilos para el encabezado dentro del contenedorError */
+#contenedorError h1 {
+    color: #4CAF50; /* Color del texto del encabezado */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el mensaje de error */
+.error-message {
+    color: red;
+    font-style: italic;
+    text-align: center;
+    width: 40%;
+    margin-bottom: 10px;
+    margin: auto; /* Centrar horizontalmente */
+}
+
+/* Estilos para el enlace de volver al formulario */
+.botonEnlace {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.botonEnlace:hover {
+    background-color: #555;
+}
+
+.formularios{
+    width:100%;
+}
+/*/ 
+=======
+#volverAlMenu:hover {
+    background-color: #555;
+}*/
+
+.imagenes{
+    width: 30%;
+    height: auto;
+}
+
+.tamanio{
+    width: 100%;
+    height: auto;
+}
+
+.ambitos{
+    width: 20%;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilo.css">
+        <title>CityKids</title>
+    </head>
+    <body>
+        <div class="contenedor">
+            <div class="divPregunta">
+                <p>
+                    ¡Enhorabuena! Has ganado con una puntuación de 8 puntos.
+                </p>
+                <div id="rotate-container">
+                    <div id="rotate-box">
+                    <img id="rotate-image" src="../../img/win.png" alt="Imagen a rotar">
+                    </div>
+                </div>
+                <form action="../ranking/rankingGeneral.html" method="post">
+                    <label for="nombre">Introducir tu nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <button type="submit" class="botonMenu">CONTINUAR</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1081 @@
+@font-face {
+    font-family: 'PartyConfetti';
+    src: url('../fonts/PartyConfetti.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    animation: fadeIn 1s ease-in-out;
+    background-image: url('../img/bgInicio.png');
+    background-color: rgba(255, 255, 255, 0.5);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#divInterculturalidad {
+    background-image: url('../img/bgInterculturalidad.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+#divJustSocial {
+    background-image: url('../img/bgJusticiaSocial.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+#divPartDemo {
+
+    background-image: url('../img/bgCrud.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+#divDesHumano {
+    background-image: url('../img/bgDesarrollo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+#divEquidadGenero {
+    background-image: url('../img/bgEquidadGenero.png');    
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenedor de todo el contenido */
+.contenedor {
+    text-align: center;
+    height: 100%;
+}
+
+/* Títulos */
+.main-title, .main-title-white {
+    font-family: 'PartyConfetti', Courier, monospace;
+    font-size: 3.25em;
+    margin: 0;
+    margin-bottom: 20px;
+    -webkit-text-stroke: 2px rgb(47, 44, 125);
+    text-align: center;
+    text-shadow: 2px 2px 10px rgb(69, 243, 255);
+    color: #ffffff;
+}
+
+/* Imagen de la ruleta */
+#divMenuInicial, #divMenuRanking, #divMenuCompeticion, #divCrearCompeticion, #divUnirCompeticion, #divRankingCompeticion, #divRankingGlobal, #divPersonajes{
+    width: 100%;
+    height: 100%;
+    background-image: url('img/bgInicio.png');
+    backdrop-filter: blur(5px);
+    margin-top: 0px;
+    padding-top: 4%;
+}
+
+
+
+.imgInicio {
+    margin-top: 3%;
+    max-width: 30%;
+    height: auto; 
+    filter: drop-shadow(2px 2px 20px rgba(255, 213, 0, 0.7));
+    
+}
+.imgInicio:hover {
+    transition: 0.5s ease-out;
+    filter: drop-shadow(2px 2px 60px rgba(255, 213, 0, 0.7));
+    
+    
+}
+#ruleta{
+    margin-top: 15%;
+    width: 40%;
+    height: auto;
+    position: absolute;
+    left: 30%;
+    top: -30%;
+    filter: drop-shadow(2px 2px 40px rgba(255, 213, 0, 0.7));
+}
+
+button {
+    color: #333;
+    font-size: 1.125em; /* 18px */
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* button:hover {
+    background-color: #ffdb4d; 
+    text-decoration: none;
+} */
+
+/*BOTONES PANTALLA INICIAL*/
+.botonEnlace {
+    display: inline-block;
+    margin: 0 10px;
+    margin-top: 4%;
+    padding: 10px;
+    color: #fff; 
+    font-family: 'PartyConfetti';
+    font-size: 2em;
+    background-color: orange; 
+    border-radius: 16px;
+    text-shadow: 2px 2px 5px rgb(216, 90, 0);
+    cursor: pointer;
+}
+
+.botonEnlace:hover {
+    background-color: rgb(255, 186, 59); 
+    box-shadow: 2px 2px 10px rgba(255, 213, 0, 0.7);
+    transition: 0.5s ease-in-out;
+}
+
+.mensajeInf{
+    background-color: rgba(147, 147, 147, 0.588);
+    color: #2d2d2d;
+    font-weight: bold;
+    position: fixed;
+    bottom: 100px;
+    left: 30%;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+/*BOTON INFERIOR*/
+.volverAlJuego {
+    position: fixed;
+    bottom:100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    display: inline-block;
+    padding: 10px;
+    font-family: 'PartyConfetti';
+    font-size: 2em;
+    background-color: orange; 
+    border-radius: 23px;
+    text-shadow: 2px 2px 5px rgb(216, 90, 0);
+    cursor: pointer;
+}
+
+.negrita{
+    font-weight: bold;
+}
+
+/*MENUS RANK Y COMPETI*/
+
+.contenedorNegro, #formCompeticion {
+    background-color: rgba(48, 55, 138, 0.7); 
+    width: 33%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    margin:auto;
+
+}
+
+
+/*BOTONES SELECCION DE OPCIONES*/
+.botonMenu {
+    display: block;
+    width: 80%;
+    margin: auto; 
+    margin-bottom: 20px;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    background-color: rgb(47, 44, 125);
+}
+
+.botonMenu:hover {
+    background-color: rgb(66, 63, 138);
+    transition:0.5;
+    cursor: pointer;
+}
+
+/*FORMULARIO*/
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: white;
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+input,textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 0 auto 15px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input:focus,textarea:focus {
+    outline: none;
+    border-color: #ffcc00; 
+}
+
+
+
+#divVista1, #divVista2, #divVista3, #divVista4, #divVista5, #divVista6, #divVista7, #divVista8{
+    height: 100%;
+}
+
+/*TABLA RANKING*/
+
+.ranking{
+    background-color: #ffb055;
+    background-image: none;
+    border-radius: 16px;
+    width: 85%;
+    height: 75%;
+    margin: auto;
+    filter: drop-shadow(4px 3px 0px rgba(255, 60, 0, 1));
+    padding: 10px;
+    font-size: 1.5em;
+    text-align: center;
+    overflow: auto;
+}
+
+#rankingTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#rankingTable th, #rankingTable td {
+    padding: 10px;
+    color: #fff;
+}
+
+#rankingTable th {
+    background-color: #ffa641;
+}
+
+#rankingTable tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#rankingTable tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#rankingTable tr:nth-of-type(3){
+    background-color: rgb(240, 163, 30)
+}
+#rankingTable tr:nth-of-type(2){
+    background-color: rgb(162, 162, 162)
+}
+#rankingTable tr:nth-of-type(1){
+    background-color: rgb(183, 143, 75)
+}
+
+/*PREGUNTAS Y RESPUESTAS*/
+
+.divPregunta {
+    text-align: center;
+    width: 40%;
+    height: auto;
+    margin:auto;
+    margin-top: 2%;
+    padding: 30px;
+    background-color: rgba(58, 57, 57, 0.695);
+    border-radius: 40px;
+}
+
+
+/*Texto Pregunta*/
+.divPregunta p {
+    font-family: 'PartyConfetti';
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/*Respuestas*/
+.respuestaBtn {
+    display: block;
+    width: 80%;
+    margin: 50px auto;
+    padding: 15px;
+    font-size: 1.125em; /* 18px */
+    text-align: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 189, 58);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgb(255, 89, 0);
+    filter: drop-shadow(4px 3px 0px rgba(255, 60, 0, 1));
+}
+
+   
+
+
+.respuestaBtn:hover {
+    background-color: rgb(255, 200, 90);
+    color: #f9f9f9;
+    transition: 0.5s;
+}
+
+.enlaces{
+    display: block;
+}
+
+/*IMAGEN DE VICTORIA*/
+
+#rotate-container {
+    perspective: 1000px;
+    width: 200px;
+    height: 200px;
+    margin:auto;
+  }
+
+  #rotate-box {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+
+  #rotate-box:hover {
+    transform: rotate(360deg);
+  }
+
+  #rotate-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /**configuracion**/
+ #divConfig{
+    width: 100%;
+    height: 100%;
+    color: white;
+    z-index: 10;
+    background-image: url('../img/bgConfig.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    padding-top: 60px;
+    animation: fadeIn 1s ease-in-out;
+ }
+
+ #divConfig img{
+    width: 100%;
+ }
+ 
+#divConfig p{
+    color: white;
+}
+#configuracion{
+    width: 30%;
+    background-color: #0a2869a1;
+    display: block;
+    margin:auto;
+    border-radius: 16px;
+    padding: 10px;
+}
+#configuracion>#stopAudioBtn{
+    background-color:#f79b30;
+    cursor: pointer;
+    width: 15%;
+    display: block;
+    margin: auto;
+}
+
+#botonconfig{
+    position: absolute;
+    left: 90%;
+    top: 4%;
+    background-image: url('../img/engranaje2.png');
+    background-color: #f79b30;
+    height: 7.5%;
+    width: 3.5%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el botón */
+    background-position: center; /* Centra la imagen */
+    padding: 0%;
+    border: 0;
+}
+
+#botonconfig:hover{
+    background-color: none;
+    box-shadow: 2px 2px 20px #f9a94e;
+    transition:0.5s;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1300px) {
+    #botonconfig {
+        width: 50px;
+        height: 50px;
+        background-color: #ff9c2b;
+    }
+    .imgInicio{
+        max-width: 45%;
+        height: auto;
+    }
+    #ruleta{
+        top: -20%;
+    }
+}
+#bGlobal{
+    display: block;
+}
+
+.contenedorNegro>.botonMenu>img{
+    width: 80%;
+    display: none;
+}
+  #divPartDemo>.divPregunta{
+    filter: drop-shadow(2px 4px 5px rgba(0, 170, 255, 0.7));
+}
+
+#divEquidadGenero>.divPregunta{
+    filter: drop-shadow(2px 4px 5px rgba(255, 0, 183, 0.7));
+}
+#divEquidadGenero>.main-title-white{
+    -webkit-text-stroke: 2px rgb(125, 44, 116);
+    text-shadow: 2px 2px 10px rgb(255, 133, 249);
+}
+
+#divInterculturalidad>.divPregunta{
+    filter: drop-shadow(2px 5px 5px rgba(255, 255, 0, 0.7));
+}
+#divInterculturalidad>.main-title-white{
+    -webkit-text-stroke: 2px rgb(195, 195, 36);
+    text-shadow: 2px 2px 10px rgb(255, 245, 133);
+}
+
+#divDesHumano>.divPregunta{
+    filter: drop-shadow(2px 4px 5px rgba(0, 255, 38, 0.7));
+}
+#divDesHumano>.main-title-white{
+    -webkit-text-stroke: 2px rgb(44, 125, 45);
+    text-shadow: 2px 2px 10px rgb(133, 255, 135);
+}
+
+#divJustSocial>.divPregunta{
+    filter: drop-shadow(2px 4px 5px rgba(255, 13, 0, 0.7));
+}
+#divJustSocial>.main-title-white{
+    -webkit-text-stroke: 2px rgb(219, 42, 42);
+    text-shadow: 2px 2px 10px rgb(255, 133, 133);
+}
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+    font-style: italic;
+    text-align: left;
+    padding-left: 40px;
+}
+
+#puntero {
+    position: absolute;
+    top: 12.5%;
+    left: 39%;
+    width: 60%;
+    height: auto;
+}
+
+.custom-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.respuesta-correcta {
+    background-color: green;
+    color: white;
+    /* Otros estilos que desees */
+  }
+
+  .respuesta-incorrecta {
+    background-color: red;
+    color: white;
+    /* Otros estilos que desees */
+  }
+
+  .respuesta-correcta:hover {
+    background-color: rgb(0, 108, 0);
+    color: white;
+    /* Otros estilos que desees */
+  }
+  .respuesta-incorrecta:hover {
+    background-color: rgb(217, 0, 0);
+    color: white;
+    /* Otros estilos que desees */
+  }
+  .mensaje-resultado {
+    display: none; /* Ocultar el mensaje inicialmente */
+    text-align: center; /* Centrar el texto */
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: #ffcc00;
+    width: 100%;
+    /* Estilos adicionales según tu diseño */
+}
+
+/* Clase para la animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Comienza con opacidad 0 */
+    }
+    to {
+        opacity: 1; /* Llega a opacidad 1 */
+    }
+}
+
+@keyframes bucle {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.elemento-con-animacion {
+    animation: fadeIn 1s ease-in-out;
+    position: absolute;
+    width: 35%;
+    height: 60%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-family: 'PartyConfetti', Courier, monospace;
+    font-weight: bold;
+    font-size: 3.25em;
+    border-radius: 6px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 10px 20px 0 rgba(255, 0, 0, 0.5), -10px -10px 20px 0 rgba(0, 255, 0, 0.5), 10px -10px 20px 0 rgba(0, 0, 255, 0.5), -10px 10px 20px 0 rgba(255, 255, 0, 0.5);
+}
+.elemento-con-animacion input{
+    font-size: 23px;
+    font-weight: bold;
+    color: #0a2869;
+}
+.elemento-con-animacion .btnEnviarFormulario{
+    font-size: 20px;
+    background-color: #1e366c;
+    color: white;
+    padding: 10px;
+}
+.btnSiguienteTiradas {
+    font-family: 'Arial', Courier, monospace;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    box-shadow: 2px 0px 10px rgba(255, 179, 0, 0.873);
+    background-color: #ff9c2b;
+    display: block;
+    width: 80%;
+    height: 15%;
+    margin: auto;
+}
+.btnSiguienteTiradas:hover {
+    background-color: #f79b30;
+    transition: 0.6s;
+}
+
+.texto-elemento{
+    width: 100%;
+    text-align: center;
+}
+
+
+/* Estilos CSS para el contenedor principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta la altura según tu diseño */
+  }
+  
+  /* Estilos CSS para el contenedor de puntuación */
+  .puntuacion-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 300px;
+  }
+  
+  /* Estilos CSS para el botón de volver al inicio */
+  .btn-volver-inicio {
+    display: block; /* Cambia a bloque para ocupar el ancho disponible */
+    margin-top: 15px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #divRankingGlobal>.ranking>.main-title-white{
+    font-family: 'PartyConfetti', Courier, monospace;
+    font-size: 2.25em;
+    margin: 0;
+    margin-bottom: 20px;
+    -webkit-text-stroke: 2px orangered;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgb(255, 190, 69);
+    color: #ffffff;
+  }
+  /* Estilos de hover para el botón de volver al inicio */
+  .btn-volver-inicio:hover {
+    background-color: #3367d6;
+  }
+
+/*PERSONAJESS*/
+
+  
+  #divPersonajes img{
+    width: 40%;
+    text-align: center;
+  }
+
+  #divPersonajes {
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+  }
+  
+  .flip-card {
+    margin-top: 20px;
+    background-color: transparent;
+    width: 16%;
+    height: 600px;
+    perspective: 1000px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px;
+    float: left;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border-radius: 2em;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #0d1529;
+  border: 4px solid #4d43da;
+}
+
+.profile-image {
+  background-color: transparent;
+  border: none;
+  margin-top: 15px;
+  border-radius: 5em;
+  width: 100%;
+}
+
+
+.name {
+  margin-top: 15px;
+  font-size: 27px;
+  color: #b3e1f6;
+  font-weight: bold;
+}
+
+.flip-card-back {
+  background-color: #bdedff;
+  border: 4px solid #4843da;
+  transform: rotateY(180deg);
+  padding: 11px;
+  overflow: auto;
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: rgb(14, 15, 64);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/*SCROLL*/
+
+.flip-card-back::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .flip-card-back::-webkit-scrollbar-thumb {
+    background-color: #4d43da; /* Thumb color */
+    border-radius: 10px; /* Round the thumb */
+  }
+  
+  .flip-card-back::-webkit-scrollbar-track {
+    background-color: #bdedff; /* Track color */
+    border-radius: 10px; /* Round the track */
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /*ANIMACION CORRECTO INCORRECTO*/
+
+  @keyframes popPulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .glow {
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  .pop-pulse {
+    animation: popPulse 0.5s ease-in-out;
+  }
+  
+  .pop-in {
+    animation: popIn 0.5s ease-out;
+  }
+
+
+
+
+  @media only screen and (max-width: 480px) {
+    /* Tus estilos aquí */
+    .main-title-white {
+        font-size: 2.25em;
+    }
+    .divPregunta {
+        width: 80%;
+    }
+    .respuestaBtn {
+        width: 100%;
+    }
+    .elemento-con-animacion {
+        width: 70%;
+    }
+    label {
+        font-size: 2em;
+        display: none;
+    }
+    input::placeholder {
+        font-size: 25px;
+    }
+    #configuracion {
+        width: 80%;
+        height: 85%;
+    }
+    #botonconfig {
+        position: absolute;
+        left: 82%;
+        top: 4%;
+    }
+    #divCrearCompeticion > .volverAlJuego,
+    #divRankingGlobal > .volverAlJuego {
+        position: fixed;
+        bottom: 7px;
+        font-size: x-large;
+        height: 50px;
+        overflow: hidden;
+        padding: 0px;
+    }
+    #divCrearCompeticion > #formCompeticion > #crearcompeticion > .botonMenu,
+    #divRankingCompeticion > .contenedorNegro > form > .botonMenu {
+        width: 80%;
+        height: 40px;
+        overflow: hidden;
+        padding: 0px;
+    }
+    .divPregunta {
+        height: 70vh;
+        overflow: auto;
+    }
+    .divPregunta p {
+        font-size: 1.5em;
+        margin: 0px;
+    }
+    .respuestaBtn {
+        padding: 5px;
+        font-size: 12px;
+        margin: 0px;
+        margin-top: 20px;
+    }
+    .elemento-con-animacion {
+        width: 75%;
+        height: 40%;
+    }
+    .ranking {
+        overflow: auto;
+        font-size: 1em;
+        height: 84%;
+    }
+    div{
+        overflow: auto;
+    }
+}
+
+    @media only screen and (max-width: 1300px) and (orientation: portrait) {
+        body{
+            background-image: url('../img/fondoMovil.gif');
+        }
+        #divPersonajes img{
+            width: 40%;
+            text-align: center;
+          }
+          #divPersonajes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: auto;
+            background-color: #0a28696a;
+          }
+          
+          .flip-card {
+            background-color: transparent;
+            width: 70%;
+            height: 50%;
+            perspective: 1000px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: auto;
+            margin-top: auto;
+            float: none;
+            margin-top: 50px;
+          }
+          #contr{
+            background-color: #1b198d87;
+            height: 75%;
+            overflow: auto;
+            width: 80%;
+            margin: 40px auto auto auto;
+            border-radius: 16px;
+
+          }
+        #divMenuInicial{
+            backdrop-filter: blur(10px);
+            background-image: url('../img/fondoMovil.png');
+            background-size: cover;
+        }
+        #ruleta{
+            width: 100%;
+            margin-top: 20%;
+            height: auto;
+            position: absolute;
+            left: 30%;
+            top: -30%;
+            
+        }
+        #divConfig{
+            background-image: none;
+        }
+        .respuestaBtn {
+            font-size: 1.5em;
+        }
+        .contenedorNegro>.botonMenu>span{
+            display:none;
+        }
+        .contenedorNegro>.botonMenu>img{
+            display:block;
+            margin: auto;
+        }
+    
+        #divMenuCompeticion>.contenedorNegro>.botonMenu>img{
+            display:block;
+        }
+        #divMenuCompeticion>.contenedorNegro>.botonMenu>span{
+            display:none;
+        }
+    
+        .contenedorNegro>.botonMenu{
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            padding: 0px;
+            margin-left: 7px;
+        }
+        
+        #formCompeticion{
+            width: 80%;
+            margin-top: 30px;
+        }
+        input::placeholder,
+        textarea::placeholder,
+        input[type="datetime-local"],
+        input,
+        textarea {
+            font-size: x-large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            color: #0a2869;
+        }
+
+        .mensajeInf{
+            display: none;
+        }
+        .enlaces{
+            margin-top: 30px;
+        }
+        .main-title{
+            font-size: 5em;
+        }
+        .botonMenu, .botonEnlace, .volverAlJuego{
+            display: block;
+            width: 50%;
+            height: 100px;
+            margin: 20px auto;
+            font-size: 2em;
+        }
+       
+        #configuracion{
+            width: 80%;
+            height: 90%;
+        }
+
+        #divRankigGlobal>.volverAlJuego{
+            overflow: hidden;
+            font-size: 20px;
+            height: 30px;
+        }
+        .contenedorNegro{
+            padding-top: 10px;
+            width: 80%;
+            margin-top: 30px;
+        }
+        label{
+            font-size: 2em;
+            display: none;
+        }
+        #ruleta{
+            top: 0;
+            width: 70%;
+            left: 15%;
+        }
+        #puntero {
+            display: none;
+        }
+        .divPregunta{
+            width: 80%;
+        }
+        #divPartDemo{
+            background-image: url('../img/bgParticipacion.png');
+        }
+        #divJustSocial{
+            background-image: url('../img/bgJusticia2.png');
+        }
+        #divDesHumano{
+            background-image: url('../img/bgDesarrollo2.png');
+        }
+        #divInterculturalidad{
+            background-image: url('../img/bgInterculturalidad2.png');
+        }
+        #divEquidadGenero{
+            background-image: url('../img/bgEquidad2.png');
+        }
+
+
+        .elemento-con-animacion{
+            width: 90%;
+            height: 70%;
+        }
+
+        #personajesButton {
+            display: none;
+        }
+
+      }

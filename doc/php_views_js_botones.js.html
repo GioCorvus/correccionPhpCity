@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: php/views/js/botones.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: php/views/js/botones.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Clase para gestionar la creación y eliminación dinámica de respuestas incorrectas.
+ */
+class RespuestasIncorrectasManager {
+    /**
+     * Constructor de la clase.
+     */
+    constructor() {
+        /**
+         * Contador de respuestas incorrectas, inicia en 3, ya que al ser las 'extra', las estáticas ocupan el 0, el 1 y el 2
+         * @type {number}
+         */
+        this.contadorRespuestasIncorrectas = 3;
+
+        /**
+         * Contenedor HTML tipo DIV donde se añadirán y eliminarán las respuestas incorrectas.
+         * @type {HTMLElement}
+         */
+        this.container = document.getElementById('respuestas_incorrectas_container');
+    }
+
+    /**
+     * Agrega una nueva respuesta incorrecta al formulario.
+     */
+    agregarRespuestaIncorrecta() {
+        /**
+         * Crea un nuevo elemento &lt;label> para la nueva respuesta incorrecta.
+         * @type {HTMLLabelElement}
+         */
+        const label = document.createElement('label');
+        label.setAttribute('for', 'texto_respuesta_incorrecta' + this.contadorRespuestasIncorrectas);
+        label.textContent = 'Texto de la Respuesta Incorrecta ' + this.contadorRespuestasIncorrectas + ':';
+
+        /**
+         * Crea un nuevo elemento &lt;input> para la nueva respuesta incorrecta.
+         * @type {HTMLInputElement}
+         */
+        const input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('id', 'texto_respuesta_incorrecta' + this.contadorRespuestasIncorrectas);
+        input.setAttribute('name', 'texto_respuesta_incorrecta' + this.contadorRespuestasIncorrectas);
+
+        // añado los elementos al contenedor, label, input y el salto de línea
+        this.container.appendChild(label);
+        this.container.appendChild(input);
+        this.container.appendChild(document.createElement('br')); // Salto de línea
+
+        // incremento el contador para la próxima respuesta
+        this.contadorRespuestasIncorrectas++;
+    }
+
+    /**
+     * Elimina la última respuesta incorrecta del formulario.
+     */
+    eliminarRespuestaIncorrecta() {
+        console.log("borrado");
+
+        // verifico que haya al menos 3 respuestas incorrectas antes de eliminar. si no, al ser el minimo, no borro
+        if (this.contadorRespuestasIncorrectas > 3) {
+            this.contadorRespuestasIncorrectas--;
+
+            // elimino los elementos del contenedor en orden inverso (último agregado, primero eliminado)
+            this.container.removeChild(this.container.lastChild); // &lt;br>
+            this.container.removeChild(this.container.lastChild); // input
+            this.container.removeChild(this.container.lastChild); // label
+        } else {
+            console.log("No puedo bajar de 3");
+        }
+    }
+}
+
+/**
+ * Instancia la clase RespuestasIncorrectasManager al cargar el documento.
+ */
+const respuestasManager = new RespuestasIncorrectasManager();
+
+/**
+ * Función externa para agregar una respuesta incorrecta.
+ */
+function agregarRespuestaIncorrecta() {
+    respuestasManager.agregarRespuestaIncorrecta();
+}
+
+/**
+ * Función externa para eliminar la última respuesta incorrecta.
+ */
+function eliminarRespuestaIncorrecta() {
+    respuestasManager.eliminarRespuestaIncorrecta();
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ConfirmacionBorrado.html">ConfirmacionBorrado</a></li><li><a href="Controlador.html">Controlador</a></li><li><a href="CrearCompeticion.html">CrearCompeticion</a></li><li><a href="FormularioValidator.html">FormularioValidator</a></li><li><a href="MenuRanking.html">MenuRanking</a></li><li><a href="RankingGlobal.html">RankingGlobal</a></li><li><a href="RespuestasIncorrectasManager.html">RespuestasIncorrectasManager</a></li><li><a href="Ruleta.html">Ruleta</a></li></ul><h3>Global</h3><ul><li><a href="global.html#agregarRespuestaIncorrecta">agregarRespuestaIncorrecta</a></li><li><a href="global.html#eliminarRespuestaIncorrecta">eliminarRespuestaIncorrecta</a></li><li><a href="global.html#respuestasManager">respuestasManager</a></li><li><a href="global.html#validarFormularioEnviado">validarFormularioEnviado</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Nov 30 2023 20:56:46 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

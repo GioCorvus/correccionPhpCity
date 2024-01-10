@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: CrearCompeticion</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: CrearCompeticion</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>CrearCompeticion<span class="signature">(controlador, base)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Clase CrearCompeticion que extiende de Vista para gestionar la creación de competiciones.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="CrearCompeticion"><span class="type-signature"></span>new CrearCompeticion<span class="signature">(controlador, base)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Constructor de la clase CrearCompeticion.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>controlador</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Controlador.html">Controlador</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Instancia del controlador del juego.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>base</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Elemento HTML base para la interfaz de creación de competiciones.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_vistas_vcrearcompeticion.js.html">js/vistas/vcrearcompeticion.js</a>, <a href="js_vistas_vcrearcompeticion.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>Vista</li>
+    </ul>
+
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="CrearCompeticion.html">CrearCompeticion</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="aplicarEstilos"><span class="type-signature"></span>aplicarEstilos<span class="signature">(elemento, esValido, mensajeError)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Método para aplicar estilos y mensajes de error o éxito en el formulario.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elemento</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Elemento del formulario a modificar.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>esValido</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Indica si el valor del elemento es válido.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mensajeError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Mensaje de error a mostrar en caso de no ser válido.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_vistas_vcrearcompeticion.js.html">js/vistas/vcrearcompeticion.js</a>, <a href="js_vistas_vcrearcompeticion.js.html#line108">line 108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="enviarFormularioAjax"><span class="type-signature"></span>enviarFormularioAjax<span class="signature">(clave, titulo, descripcion, fechaFin)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Método para enviar el formulario de competición mediante una solicitud AJAX.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>clave</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Clave de la competición.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>titulo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Título de la competición.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>descripcion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Descripción de la competición.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fechaFin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Fecha de finalización de la competición.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_vistas_vcrearcompeticion.js.html">js/vistas/vcrearcompeticion.js</a>, <a href="js_vistas_vcrearcompeticion.js.html#line79">line 79</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="mensajeAlerta"><span class="type-signature"></span>mensajeAlerta<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Método para mostrar un mensaje de alerta tras la creación exitosa de la competición. Terminan siendo elementos html y css en lugar de un popup de chrome.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_vistas_vcrearcompeticion.js.html">js/vistas/vcrearcompeticion.js</a>, <a href="js_vistas_vcrearcompeticion.js.html#line138">line 138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="pulsarEnlace2"><span class="type-signature"></span>pulsarEnlace2<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Método para manejar el evento de clic en el enlace de retorno.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_vistas_vcrearcompeticion.js.html">js/vistas/vcrearcompeticion.js</a>, <a href="js_vistas_vcrearcompeticion.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="validarFormulario"><span class="type-signature"></span>validarFormulario<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Método para validar el formulario de creación de competiciones.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Evento asociado al clic del botón de envío.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_vistas_vcrearcompeticion.js.html">js/vistas/vcrearcompeticion.js</a>, <a href="js_vistas_vcrearcompeticion.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ConfirmacionBorrado.html">ConfirmacionBorrado</a></li><li><a href="Controlador.html">Controlador</a></li><li><a href="CrearCompeticion.html">CrearCompeticion</a></li><li><a href="FormularioValidator.html">FormularioValidator</a></li><li><a href="MenuRanking.html">MenuRanking</a></li><li><a href="RankingGlobal.html">RankingGlobal</a></li><li><a href="RespuestasIncorrectasManager.html">RespuestasIncorrectasManager</a></li><li><a href="Ruleta.html">Ruleta</a></li></ul><h3>Global</h3><ul><li><a href="global.html#agregarRespuestaIncorrecta">agregarRespuestaIncorrecta</a></li><li><a href="global.html#eliminarRespuestaIncorrecta">eliminarRespuestaIncorrecta</a></li><li><a href="global.html#respuestasManager">respuestasManager</a></li><li><a href="global.html#validarFormularioEnviado">validarFormularioEnviado</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Nov 30 2023 20:56:46 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
