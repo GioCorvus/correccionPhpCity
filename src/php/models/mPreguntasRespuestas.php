@@ -1,185 +1,156 @@
 <?php
 
-class MPreguntasRespuestas{
-
-    /** @var mysqli La conexión a la base de datos. */
+class MPreguntasRespuestas
+{
     private $conexion;
 
-    /**
-     * Constructor. Establece la conexión a la base de datos y verifica la conexión UTF-8.
-     */
-
-    function __construct() {
+    function __construct()
+    {
         require_once __DIR__ . '/../config/configdb.php';
-        $this->conexion = new mysqli(SERVIDOR, USUARIO, CONTRASENIA, BBDD);
-        if ($this->conexion->connect_error) {
-            die("Error de conexión: " . $this->conexion->connect_error);
-        }
 
-        // configuración para activar el manejo de errores en MySQLi
-        $mysqliDriver = new mysqli_driver();
-        $mysqliDriver->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
-    
-        // establezco la codificación a UTF-8
-        if (!$this->conexion->set_charset("utf8")) {
-            printf("Error al establecer la conexión a UTF-8: %s\n", $this->conexion->error);
-            exit();
+        try {
+            $dsn = "mysql:host=" . SERVIDOR . ";dbname=" . BBDD;
+            $this->conexion = new PDO($dsn, USUARIO, CONTRASENIA);
+            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conexion->exec("SET NAMES 'utf8'");
+        } catch (PDOException $e) {
+            die("Error de conexión: " . $e->getMessage());
         }
     }
 
-    /* METODO DEL MODELO QUE SE ENCARGA DE REALIZAR LA CONSULTA QUE DEVUELVE TODAS LAS PREGUNTAS Y SUS RESPUESTAS RELACIONADAS*/
-
-    function mListarPreguntas() {
+    function mListarPreguntas()
+    {
         $sql = "SELECT Pregunta.*, Ambito.nombre as nombre_ambito, Respuesta.texto_respuesta as texto_respuesta_correcta
             FROM Pregunta
             JOIN Ambito ON Pregunta.id_ambito = Ambito.id_ambito
             LEFT JOIN Respuesta ON Pregunta.id_pregunta = Respuesta.id_pregunta AND Pregunta.num_respuesta_correcta = Respuesta.num_respuesta
             ORDER BY Ambito.id_ambito, Pregunta.id_pregunta";
-                            
-        $resultado = $this->conexion->query($sql);
-        $datos = [];
-    
-        while ($fila = $resultado->fetch_assoc()) {
-            $datos[] = $fila;
-        }
+
+        $stmt = $this->conexion->query($sql);
+        $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         return $datos;
     }
-    
-    /*METODO DEL MODELO QUE SE ENCARGA DE BORRAR UNA PREGUNTA Y SUS RESPUESTAS SEGUN LA ID RECIBIDA */
 
-    public function mBorrarPregunta($id_pregunta) {
-        $sql = "DELETE FROM Pregunta WHERE id_pregunta = '$id_pregunta'";
-        $this->conexion->query($sql);
-
-
+    public function mBorrarPregunta($id_pregunta)
+    {
+        $sql = "DELETE FROM Pregunta WHERE id_pregunta = :id_pregunta";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
-    /*FORMULARIO ALTA*/ 
+    public function crearPreguntaYRespuestas($pregunta, $ambito, $respuestas)
+    {
+        $pregunta = empty($pregunta) ? null : $pregunta;
+        $ambito = empty($ambito) ? null : $ambito;
 
-    /*METODO DEL MODELO QUE SE ENCARGA DE REALIZAR UN ALTA CON LOS DATOS RECIBIDOS DEL CONTROLADOR */
+        $this->conexion->beginTransaction();
 
-    public function crearPreguntaYRespuestas($pregunta, $ambito, $respuestas) {
-        // si $variable está vacía, se asigna el valor "NULL". De lo contrario, se escapa la cadena para prevenir inyecciones sql y se envuelve entre comillas simples.
-        $pregunta = ($pregunta === '') ? "NULL" : "'" . $this->conexion->real_escape_string($pregunta) . "'";
-        $ambito = ($ambito === '') ? "NULL" : $this->conexion->real_escape_string($ambito);
-    
-        $this->conexion->begin_transaction();
-    
         try {
-            // Insertar la pregunta
-            $sql_insertar_pregunta = "INSERT INTO Pregunta (pregunta, id_ambito) VALUES ($pregunta, $ambito)";
-            $this->conexion->query($sql_insertar_pregunta);
-    
-            $id_pregunta = $this->conexion->insert_id;
-    
-            // Insertar las respuestas
+            $sql_insertar_pregunta = "INSERT INTO Pregunta (pregunta, id_ambito) VALUES (:pregunta, :ambito)";
+            $stmt = $this->conexion->prepare($sql_insertar_pregunta);
+            $stmt->bindParam(':pregunta', $pregunta, PDO::PARAM_STR);
+            $stmt->bindParam(':ambito', $ambito, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $id_pregunta = $this->conexion->lastInsertId();
+
             foreach ($respuestas as $num_respuesta => $texto_respuesta) {
-                $texto_respuesta = ($texto_respuesta === '') ? "NULL" : "'" . $this->conexion->real_escape_string($texto_respuesta) . "'";
-                $sql_insertar_respuesta = "INSERT INTO Respuesta (id_pregunta, num_respuesta, texto_respuesta) VALUES ($id_pregunta, $num_respuesta, $texto_respuesta)";
-                $this->conexion->query($sql_insertar_respuesta);
-    
-                // Actualizar la respuesta correcta en la pregunta
+                $texto_respuesta = empty($texto_respuesta) ? null : $texto_respuesta;
+                $sql_insertar_respuesta = "INSERT INTO Respuesta (id_pregunta, num_respuesta, texto_respuesta) VALUES (:id_pregunta, :num_respuesta, :texto_respuesta)";
+                $stmt_respuesta = $this->conexion->prepare($sql_insertar_respuesta);
+                $stmt_respuesta->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
+                $stmt_respuesta->bindParam(':num_respuesta', $num_respuesta, PDO::PARAM_INT);
+                $stmt_respuesta->bindParam(':texto_respuesta', $texto_respuesta, PDO::PARAM_STR);
+                $stmt_respuesta->execute();
+
                 if ($num_respuesta == 1) {
-                    $sql_actualizar_respuesta_correcta = "UPDATE Pregunta SET num_respuesta_correcta = $num_respuesta WHERE id_pregunta = $id_pregunta";
-                    $this->conexion->query($sql_actualizar_respuesta_correcta);
+                    $sql_actualizar_respuesta_correcta = "UPDATE Pregunta SET num_respuesta_correcta = :num_respuesta WHERE id_pregunta = :id_pregunta";
+                    $stmt_actualizar_respuesta_correcta = $this->conexion->prepare($sql_actualizar_respuesta_correcta);
+                    $stmt_actualizar_respuesta_correcta->bindParam(':num_respuesta', $num_respuesta, PDO::PARAM_INT);
+                    $stmt_actualizar_respuesta_correcta->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
+                    $stmt_actualizar_respuesta_correcta->execute();
                 }
             }
-    
+
             $this->conexion->commit();
             return $id_pregunta;
-        } catch (Exception $e) {
-            $this->conexion->rollback();
+        } catch (PDOException $e) {
+            $this->conexion->rollBack();
             throw $e;
         }
     }
-    
-
-    /*FORMULARIO MODIFICACION */
-
-    /*METODO QUE SE ENCARGA DE REALIZAR LA CONSULTA PARA OBTENER LOS DATOS
-     RELACIONADOS CON UNA ID PARA MOSTRAR EN LA MODIFICACION*/
 
     public function obtenerPreguntaYRespuestas($id_pregunta)
     {
-        $id_pregunta = $this->conexion->real_escape_string($id_pregunta);
+        $sql_pregunta = "SELECT * FROM Pregunta WHERE id_pregunta = :id_pregunta";
+        $stmt_pregunta = $this->conexion->prepare($sql_pregunta);
+        $stmt_pregunta->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
+        $stmt_pregunta->execute();
 
-        // obtengo los datos de la pregunta
-        $sql_pregunta = "SELECT * FROM Pregunta WHERE id_pregunta = '$id_pregunta'";
-        $resultado_pregunta = $this->conexion->query($sql_pregunta);
+        $datos_pregunta = $stmt_pregunta->fetch(PDO::FETCH_ASSOC);
 
-        // obtengo las respuestas asociadas a la pregunta
-        $sql_respuestas = "SELECT * FROM Respuesta WHERE id_pregunta = '$id_pregunta'";
-        $resultado_respuestas = $this->conexion->query($sql_respuestas);
+        $sql_respuestas = "SELECT * FROM Respuesta WHERE id_pregunta = :id_pregunta";
+        $stmt_respuestas = $this->conexion->prepare($sql_respuestas);
+        $stmt_respuestas->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
+        $stmt_respuestas->execute();
 
-        // verifico si se encontraron datos
-        if ($resultado_pregunta && $resultado_respuestas) {
-            $datos_pregunta = $resultado_pregunta->fetch_assoc();
+        $datos_respuestas = $stmt_respuestas->fetchAll(PDO::FETCH_ASSOC);
 
-            // si hay respuestas, agrego al array
-            if ($resultado_respuestas->num_rows > 0) {
-                $datos_respuestas = [];
-                while ($fila_respuesta = $resultado_respuestas->fetch_assoc()) {
-                    $datos_respuestas[] = $fila_respuesta;
-                }
-
-                // agrego respuestas al array de la pregunta
-                $datos_pregunta['respuestas'] = $datos_respuestas;
-            }
-
-            return $datos_pregunta;
-        } else {
-            throw new Exception("Error al obtener datos de la pregunta y respuestas: " . $this->conexion->error);
+        if (!empty($datos_respuestas)) {
+            $datos_pregunta['respuestas'] = $datos_respuestas;
         }
+
+        return $datos_pregunta;
     }
 
-    /* METODO DEL MODELO QUE SE ENCARGA DE REALIZAR EL BORRADO Y ALTA PARA LA MODIFICACIÓN SEGÚN LA ID Y LOS DATOS
-    PROPORCIONADOS POR EL CONTROLADOR*/
-
-    public function actualizarPreguntaYRespuestas($id_pregunta_a_actualizar, $pregunta, $ambito, $respuestas) {
+    public function actualizarPreguntaYRespuestas($id_pregunta_a_actualizar, $pregunta, $ambito, $respuestas)
+    {
         try {
-            $this->conexion->begin_transaction();
-    
-            // Eliminar la pregunta y sus respuestas actuales
-            $sql_eliminar_pregunta_y_respuestas = "DELETE FROM Pregunta WHERE id_pregunta = $id_pregunta_a_actualizar";
-            $this->conexion->query($sql_eliminar_pregunta_y_respuestas);
-    
-            // Insertar la nueva pregunta
-            $pregunta = ($pregunta === '') ? "NULL" : "'" . $this->conexion->real_escape_string($pregunta) . "'";
-            $ambito = ($ambito === '') ? "NULL" : "'" . $this->conexion->real_escape_string($ambito) . "'";
-    
-            $sql_insertar_pregunta = "INSERT INTO Pregunta (id_pregunta, pregunta, id_ambito) VALUES ($id_pregunta_a_actualizar, $pregunta, $ambito)";
-            $this->conexion->query($sql_insertar_pregunta);
-    
-            // Insertar nuevas respuestas
+            $this->conexion->beginTransaction();
+
+            $sql_eliminar_pregunta_y_respuestas = "DELETE FROM Pregunta WHERE id_pregunta = :id_pregunta";
+            $stmt_eliminar_pregunta_y_respuestas = $this->conexion->prepare($sql_eliminar_pregunta_y_respuestas);
+            $stmt_eliminar_pregunta_y_respuestas->bindParam(':id_pregunta', $id_pregunta_a_actualizar, PDO::PARAM_INT);
+            $stmt_eliminar_pregunta_y_respuestas->execute();
+
+            $pregunta = empty($pregunta) ? null : $pregunta;
+            $ambito = empty($ambito) ? null : $ambito;
+
+            $sql_insertar_pregunta = "INSERT INTO Pregunta (id_pregunta, pregunta, id_ambito) VALUES (:id_pregunta, :pregunta, :ambito)";
+            $stmt_insertar_pregunta = $this->conexion->prepare($sql_insertar_pregunta);
+            $stmt_insertar_pregunta->bindParam(':id_pregunta', $id_pregunta_a_actualizar, PDO::PARAM_INT);
+            $stmt_insertar_pregunta->bindParam(':pregunta', $pregunta, PDO::PARAM_STR);
+            $stmt_insertar_pregunta->bindParam(':ambito', $ambito, PDO::PARAM_INT);
+            $stmt_insertar_pregunta->execute();
+
             foreach ($respuestas as $num_respuesta => $texto_respuesta) {
-                $texto_respuesta = ($texto_respuesta === '') ? "NULL" : "'" . $this->conexion->real_escape_string($texto_respuesta) . "'";
-    
-                $sql_insertar_respuesta = "
-                    INSERT INTO Respuesta (id_pregunta, num_respuesta, texto_respuesta)
-                    VALUES ($id_pregunta_a_actualizar, $num_respuesta, $texto_respuesta)";
-    
-                $this->conexion->query($sql_insertar_respuesta);
-    
-                // Actualizar la respuesta correcta en la pregunta
+                $texto_respuesta = empty($texto_respuesta) ? null : $texto_respuesta;
+
+                $sql_insertar_respuesta = "INSERT INTO Respuesta (id_pregunta, num_respuesta, texto_respuesta) VALUES (:id_pregunta, :num_respuesta, :texto_respuesta)";
+                $stmt_insertar_respuesta = $this->conexion->prepare($sql_insertar_respuesta);
+                $stmt_insertar_respuesta->bindParam(':id_pregunta', $id_pregunta_a_actualizar, PDO::PARAM_INT);
+                $stmt_insertar_respuesta->bindParam(':num_respuesta', $num_respuesta, PDO::PARAM_INT);
+                $stmt_insertar_respuesta->bindParam(':texto_respuesta', $texto_respuesta, PDO::PARAM_STR);
+                $stmt_insertar_respuesta->execute();
+
                 if ($num_respuesta == 1) {
-                    $sql_actualizar_respuesta_correcta = "
-                        UPDATE Pregunta SET num_respuesta_correcta = $num_respuesta
-                        WHERE id_pregunta = $id_pregunta_a_actualizar";
-                    $this->conexion->query($sql_actualizar_respuesta_correcta);
+                    $sql_actualizar_respuesta_correcta = "UPDATE Pregunta SET num_respuesta_correcta = :num_respuesta WHERE id_pregunta = :id_pregunta";
+                    $stmt_actualizar_respuesta_correcta = $this->conexion->prepare($sql_actualizar_respuesta_correcta);
+                    $stmt_actualizar_respuesta_correcta->bindParam(':num_respuesta', $num_respuesta, PDO::PARAM_INT);
+                    $stmt_actualizar_respuesta_correcta->bindParam(':id_pregunta', $id_pregunta_a_actualizar, PDO::PARAM_INT);
+                    $stmt_actualizar_respuesta_correcta->execute();
                 }
             }
-    
+
             $this->conexion->commit();
             return $id_pregunta_a_actualizar;
-        } catch (Exception $e) {
-            $this->conexion->rollback();
+        } catch (PDOException $e) {
+            $this->conexion->rollBack();
             throw $e;
         }
     }
-    
-    
-    
-    
-
 }
+
 ?>
