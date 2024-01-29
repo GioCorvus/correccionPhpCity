@@ -12,8 +12,8 @@
         }
 
         public function mostrarMenuAdmin(){
-            $this->nombrePagina = 'Menu Administrador';
-            $this->view = 'vMostrarMenuAdmin';
+            $this->nombrePagina = 'Login';
+            $this->view = 'vLogin';
         }
 
     }

@@ -1,6 +1,6 @@
 <?php
 
-    require_once '/../config/mConecion.php';
+    require_once __DIR__ . '/../models/mConexion.php';
 
     class MPreguntasRespuestas
     {

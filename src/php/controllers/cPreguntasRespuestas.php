@@ -19,7 +19,7 @@
          */
 
         public function __construct() {
-            $this->view = 'vListarCompeticiones';
+            $this->view = 'vListarPreguntas';
             $this->nombrePagina ='';
             $this->objModelo = new MPreguntasRespuestas();
         }
