@@ -16,5 +16,10 @@
             $this->view = 'vLogin';
         }
 
+        public function mostrarMenu(){
+            $this->nombrePagina = 'Menú de Administracion';
+        $this->view = 'vMostrarMenuAdmin';
+        }
+
     }
 ?>

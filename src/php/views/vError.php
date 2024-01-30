@@ -9,5 +9,5 @@
         }
         ?>
     </div>
-    <a href="index.php?c=cAmbitos&m=listarAmbitos" class="volverAlJuego">VOLVER AL LISTADO</a>
+    <a href="index.php?c=cInicio&m=mostrarMenu" class="volverAlJuego">VOLVER AL LISTADO</a>
 </div>

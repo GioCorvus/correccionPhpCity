@@ -1,33 +1,30 @@
 <?php
+    require_once __DIR__ . '/../controllers/cAut.php';
     require_once __DIR__ . '/../models/mPreguntasRespuestas.php';
 
     class cPreguntasRespuestas {
-        /** @var string El nombre de la página actual. */
+
         public $nombrePagina;
 
-        /** @var string La vista actual que se va a mostrar. */
         public $view;
 
-        /** @var string|null El mensaje de estado o error después de realizar una operación. */
         public $mensaje;
 
-        /** @var mCompeticiones Objeto de modelo de competiciones. */
         public $objModelo;
-
-        /**
-         * Constructor. Inicializa valores predeterminados y crea una instancia del modelo de preguntas y respuestas.
-         */
 
         public function __construct() {
             $this->view = 'vListarPreguntas';
             $this->nombrePagina ='';
             $this->objModelo = new MPreguntasRespuestas();
+            $this->authController = new cAut();
+
         }
 
         /*METODO DEL CONTROLADOR DE REDIRECCION AL MENU DE Q&A */
 
 
         public function mostrarMenuPreguntasRespuestas(){
+            $this->authController->checkSession();
             $this->nombrePagina = 'Menu Preguntas y Respuestas';
             $this->view = 'vMenuPreguntasRespuestas';
         }
@@ -35,6 +32,7 @@
         /*METODO DEL CONTROLADOR DE REDIRECCION AL FORMULARIO DE ALTA */
 
         public function mostrarFormPregunta(){
+            $this->authController->checkSession();
             $this->nombrePagina = 'Alta Pregunta';
             $this->view = 'vAltaPregunta';
         }
@@ -42,6 +40,7 @@
         /*METODO DEL CONTROLADOR QUE SE ENCARGA DE DEVOLVER LOS DATOS DEL MODELO PARA EL LISTADO */
         
         public function listarPreguntas(){
+            $this->authController->checkSession();
             $this->view = 'vListarPreguntas';
             $this->nombrePagina = 'Listar Preguntas';
             $datos =  $this->objModelo->mListarPreguntas();
@@ -51,6 +50,7 @@
         /*METODO DEL CONTROLADOR QUE SE ENCARGA DEL ENVÍO DE LA ID PARA EL BORRADO */
         
         public function borrarPregunta(){
+            $this->authController->checkSession();
             $this->view = 'vListarPreguntas';
             $this->nombrePagina = 'Listar Preguntas';
             $id_pregunta = $_GET['id_pregunta'];
@@ -65,6 +65,7 @@
 
         public function procesarFormulario(){
 
+            $this->authController->checkSession();
             $this->view='vAltaPregunta';
             $this->nombrePagina = 'Alta Preguntas';
 
@@ -127,6 +128,8 @@
         /* METODO DEL CONTROLADOR QUE SE ENCARGA DE MOSTRAR EL FORMULARIO DE MODIFICACION*/
 
         public function mostrarModificarPregunta() {
+
+            $this->authController->checkSession();
             $id_pregunta = $_GET['id_pregunta'];
 
             $this->nombrePagina = 'Modificar Pregunta';

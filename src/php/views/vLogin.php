@@ -1,3 +1,14 @@
+<?php
+
+// Check if the user is already logged in
+if (isset($_SESSION['user_id'])) {
+    header('Location: index.php?c=cAut&m=mostrarMenu');
+    exit();
+}
+
+// Continue with the rest of your HTML/PHP code for the login view
+?>
+
 <div class="contenedor">
 
 <form method="post" action="index.php?c=cAut&m=procesarLogin">
