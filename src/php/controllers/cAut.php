@@ -14,6 +14,11 @@ class cAut
         $this->objModelo = new MUsuario();
     }
 
+    public function mostrarLogin(){
+        $this->nombrePagina = 'Menú de Administracion';
+        $this->view = 'vLogin';
+    }
+
     public function mostrarMenu()
     {
         $this->nombrePagina = 'Menú de Administracion';
@@ -33,7 +38,7 @@ class cAut
 
             if ($user) {
                 session_start();
-                $_SESSION['user_id'] = $user['id']; // You can store any user-related information in the session
+                $_SESSION['user_id'] = $user['id']; 
                 $_SESSION['username'] = $user['nombre_usuario'];
 
                 header('Location: index.php?c=cAut&m=mostrarMenu');
@@ -43,4 +48,28 @@ class cAut
             }
         }
     }
+
+    public function checkSession()
+    {
+        session_start();
+
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: index.php?c=cAut&m=mostrarLogin'); // redireccion al login
+            exit();
+        }
+    }
+
+    public function cerrarSesion()
+    {
+        session_start();
+
+
+        $_SESSION = array();
+        // Destroy the session
+        session_destroy();
+        // Redirect to the login page
+        header('Location: index.php?c=cAut&m=mostrarLogin');
+        exit();
+    }
+
 }
